@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author sikona
+ *
+ */
+module StreamAssignment {
+}
