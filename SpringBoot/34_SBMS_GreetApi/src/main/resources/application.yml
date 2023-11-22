@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: GREET-API
+#    to register with Admin server with port 2222
+  boot:
+    admin:
+      client:
+        url: http://localhost:2222/
+       
+#    to enable all actuator end points
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

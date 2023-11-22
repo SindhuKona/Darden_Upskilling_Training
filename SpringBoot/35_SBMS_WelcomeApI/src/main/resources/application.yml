@@ -1,0 +1,18 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: Welcome-Api
+#    to register with Admin server with port 1111
+  boot:
+    admin:
+      client:
+        url: http://localhost:2222/
+       
+#    to enable all actuator end points
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
