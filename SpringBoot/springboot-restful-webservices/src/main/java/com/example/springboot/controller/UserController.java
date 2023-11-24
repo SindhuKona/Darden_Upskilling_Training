@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.springboot.entity.User;
+import com.example.springboot.dto.UserDto;
 import com.example.springboot.service.UserService;
 
 import lombok.AllArgsConstructor;
@@ -26,31 +26,31 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping()
-	public ResponseEntity<User> saveUser(@RequestBody User user) {
-		User savedUser = userService.createUser(user);
-		return new ResponseEntity<User>(savedUser, HttpStatus.CREATED);
+	public ResponseEntity<UserDto> saveUser(@RequestBody UserDto user) {
+		UserDto savedUser = userService.createUser(user);
+		return new ResponseEntity<UserDto>(savedUser, HttpStatus.CREATED);
 
 	}
 
 	@GetMapping("{id}")
-	public ResponseEntity<User> getUserById(@PathVariable("id") long userId) {
-		User user = userService.getUserById(userId);
-		return new ResponseEntity<User>(user, HttpStatus.OK);
+	public ResponseEntity<UserDto> getUserById(@PathVariable("id") long userId) {
+		UserDto user = userService.getUserById(userId);
+		return new ResponseEntity<UserDto>(user, HttpStatus.OK);
 
 	}
 
 	@GetMapping
-	public ResponseEntity<List<User>> getAllUsers() {
-		List<User> users = userService.getAllUsers();
-		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+	public ResponseEntity<List<UserDto>> getAllUsers() {
+		List<UserDto> users = userService.getAllUsers();
+		return new ResponseEntity<>(users, HttpStatus.OK);
 
 	}
 
 	@PutMapping("{id}")
-	public ResponseEntity<User> updateUser(@PathVariable("id") Long userId, @RequestBody User user) {
+	public ResponseEntity<UserDto> updateUser(@PathVariable("id") Long userId, @RequestBody UserDto user) {
 		user.setId(userId);
-		User updateUser = userService.updateUser(user);
-		return new ResponseEntity<User>(updateUser, HttpStatus.OK);
+		UserDto updateUser = userService.updateUser(user);
+		return new ResponseEntity<UserDto>(updateUser, HttpStatus.OK);
 	}
 
 	@DeleteMapping("{id}")
